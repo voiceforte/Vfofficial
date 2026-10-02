@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="Voice Forte™ Admin Panel | Manage Website Content, Portfolio, and Messages">
+    <meta name="keywords" content="Voice Forte admin, content management, portfolio management, message management, Firebase admin, website administration">
+    
+    <!-- Author and Copyright -->
+    <meta name="author" content="Voice Forte">
+    <meta name="copyright" content="Voice Forte">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    
+    <title>Admin Panel | Voice Forte™ | Strategic Growth Agency</title>
+    
+    <!-- CSS FILES -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://voiceforte.com/admin.html">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Analytics -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VR7BTZFY5V"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-VR7BTZFY5V');
+    </script>
+    
+    <!-- Admin Panel Styles -->
+    <style>
+        body {
+            background: #f8fafc;
+            font-family: 'Inter', sans-serif;
+            color: #334155;
+        }
+        
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .admin-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .admin-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        
+        .admin-header p {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+        }
+        
+        .login-card {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            padding: 3rem;
+            max-width: 500px;
+            margin: 5rem auto;
+            border: 1px solid #e5e7eb;
+            text-align: center;
+        }
+        
+        .login-card h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+        }
+        
+        .login-card .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        
+        .login-card .form-group label {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 0.75rem;
+        }
+        
+        .login-card .form-group input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: #334155;
+            background: #f8fafc;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .login-card .form-group input:focus {
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+            outline: none;
+        }
+        
+        .login-card .btn {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        
+        .admin-dashboard {
+            display: none; /* Hidden by default, shown after login */
+        }
+        
+        .admin-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .admin-tab-btn {
+            background: #e2e8f0;
+            color: #334155;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .admin-tab-btn:hover {
+            background: #cbd5e1;
+        }
+        
+        .admin-tab-btn.active {
+            background: linear-gradient(90deg, #10b981, #059669);
+            color: white;
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.2);
+        }
+        
+        .tab-content {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            padding: 2.5rem;
+            border: 1px solid #e5e7eb;
+            margin-bottom: 2rem;
+        }
+        
+        .tab-content h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .tab-content .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .tab-content .form-group label {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 0.75rem;
+        }
+        
+        .tab-content .form-group input[type="text"],
+        .tab-content .form-group input[type="email"],
+        .tab-content .form-group input[type="url"],
+        .tab-content .form-group input[type="file"],
+        .tab-content .form-group textarea,
+        .tab-content .form-group select {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: #334155;
+            background: #f8fafc;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .tab-content .form-group input:focus,
+        .tab-content .form-group textarea:focus,
+        .tab-content .form-group select:focus {
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+            outline: none;
+        }
+        
+        .tab-content .btn {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .item-list {
+            margin-top: 2rem;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 1.5rem;
+        }
+        
+        .item-list-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .item-list-header h4 {
+            font-size: 1.25rem;
+            color: #0f172a;
+            font-weight: 700;
+        }
+        
+        .item-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        
+        .item-card .item-details {
+            flex-grow: 1;
+        }
+        
+        .item-card .item-details h5 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 0.25rem;
+        }
+        
+        .item-card .item-details p {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        
+        .item-card .item-actions button {
+            margin-left: 0.5rem;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .message-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .message-card h5 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+        
+        .message-card p {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-bottom: 0.5rem;
+        }
+        
+        .message-card .message-date {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            text-align: right;
+        }
+        
+        .logout-btn-container {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            color: white;
+            font-size: 1.5rem;
+            flex-direction: column;
+        }
+        
+        .loading-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #10b981;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .error-message {
+            color: #ef4444;
+            background: #fee2e2;
+            border: 1px solid #fca5a5;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .admin-container {
+                padding: 1rem;
+            }
+            
+            .admin-header h1 {
+                font-size: 2rem;
+            }
+            
+            .login-card {
+                padding: 2rem;
+                margin: 3rem auto;
+            }
+            
+            .login-card h2 {
+                font-size: 1.75rem;
+            }
+            
+            .admin-tabs {
+                flex-direction: column;
+            }
+            
+            .admin-tab-btn {
+                width: 100%;
+            }
+            
+            .tab-content {
+                padding: 1.5rem;
+            }
+            
+            .tab-content h3 {
+                font-size: 1.75rem;
+            }
+            
+            .item-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .item-card .item-actions {
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                margin-top: 1rem;
+            }
+            
+            .item-card .item-actions button {
+                margin-left: 0.5rem;
+                margin-right: 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .admin-header h1 {
+                font-size: 1.75rem;
+            }
+            
+            .login-card h2 {
+                font-size: 1.5rem;
+            }
+            
+            .tab-content h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1>Voice Forte™ Admin Panel</h1>
+            <p>Manage your website content, portfolio, and client messages.</p>
+        </div>
+
+        <!-- Login Section -->
+        <section id="login-section" class="login-card">
+            <h2>Admin Login</h2>
+            <div id="login-error" class="error-message" style="display:none;"></div>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn btn-success">Login</button>
+            </form>
+        </section>
+
+        <!-- Admin Dashboard Section -->
+        <section id="admin-dashboard" class="admin-dashboard">
+            <div class="admin-tabs">
+                <button class="admin-tab-btn active" data-tab="settings">Website Settings</button>
+                <button class="admin-tab-btn" data-tab="pages">Page Content</button>
+                <button class="admin-tab-btn" data-tab="portfolio">Portfolio</button>
+                <button class="admin-tab-btn" data-tab="messages">Client Messages</button>
+                <button id="logout-btn" class="admin-tab-btn btn-outline-dark">Logout</button>
+            </div>
+
+            <!-- Tab Content: Website Settings -->
+            <div id="settings-tab" class="tab-content active">
+                <h3>Website Global Settings</h3>
+                <div id="settings-error" class="error-message" style="display:none;"></div>
+                <form id="settings-form">
+                    <div class="form-group">
+                        <label for="site-name">Site Name</label>
+                        <input type="text" id="site-name" name="siteName" placeholder="Voice Forte™" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tagline">Tagline</label>
+                        <input type="text" id="tagline" name="tagline" placeholder="Strategic Growth Agency" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone-number">Phone Number</label>
+                        <input type="tel" id="phone-number" name="phoneNumber" placeholder="+92 333 2924941">
+                    </div>
+                    <div class="form-group">
+                        <label for="whatsapp-number">WhatsApp Number</label>
+                        <input type="tel" id="whatsapp-number" name="whatsappNumber" placeholder="+92 313 2992571">
+                    </div>
+                    <div class="form-group">
+                        <label for="email-address">Email Address</label>
+                        <input type="email" id="email-address" name="emailAddress" placeholder="voiceforteofficials@gmail.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="facebook-url">Facebook URL</label>
+                        <input type="url" id="facebook-url" name="facebookUrl" placeholder="https://facebook.com/voiceforteofficials">
+                    </div>
+                    <div class="form-group">
+                        <label for="instagram-url">Instagram URL</label>
+                        <input type="url" id="instagram-url" name="instagramUrl" placeholder="https://instagram.com/voiceforteofficials">
+                    </div>
+                    <div class="form-group">
+                        <label for="youtube-url">YouTube URL</label>
+                        <input type="url" id="youtube-url" name="youtubeUrl" placeholder="https://youtube.com/@voiceforteofficials">
+                    </div>
+                    <div class="form-group">
+                        <label for="tiktok-url">TikTok URL</label>
+                        <input type="url" id="tiktok-url" name="tiktokUrl" placeholder="https://tiktok.com/@voiceforteofficials">
+                    </div>
+                    <div class="form-group">
+                        <label for="linkedin-url">LinkedIn URL</label>
+                        <input type="url" id="linkedin-url" name="linkedinUrl" placeholder="https://linkedin.com/company/voice-forte">
+                    </div>
+                    <button type="submit" class="btn btn-success">Save Settings</button>
+                </form>
+            </div>
+
+            <!-- Tab Content: Page Content -->
+            <div id="pages-tab" class="tab-content" style="display:none;">
+                <h3>Manage Page Content</h3>
+                <div id="pages-error" class="error-message" style="display:none;"></div>
+                <form id="page-content-form">
+                    <div class="form-group">
+                        <label for="page-select">Select Page</label>
+                        <select id="page-select" name="page" required>
+                            <option value="home">Home Page</option>
+                            <option value="about">About Page</option>
+                            <option value="services">Services Page</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="page-hero-title">Hero Title</label>
+                        <input type="text" id="page-hero-title" name="heroTitle" placeholder="Your captivating hero title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="page-hero-subtitle">Hero Subtitle</label>
+                        <textarea id="page-hero-subtitle" name="heroSubtitle" placeholder="A compelling subtitle for your hero section" rows="3" required></textarea>
+                    </div>
+                    <!-- Add more fields for other page sections as needed -->
+                    <button type="submit" class="btn btn-success">Save Page Content</button>
+                </form>
+            </div>
+
+            <!-- Tab Content: Portfolio -->
+            <div id="portfolio-tab" class="tab-content" style="display:none;">
+                <h3>Manage Portfolio Items</h3>
+                <div id="portfolio-error" class="error-message" style="display:none;"></div>
+                <form id="portfolio-form">
+                    <input type="hidden" id="portfolio-item-id" name="id">
+                    <div class="form-group">
+                        <label for="portfolio-title">Project Title</label>
+                        <input type="text" id="portfolio-title" name="title" placeholder="e.g., Tech Startup Media Launch" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="portfolio-description">Description</label>
+                        <textarea id="portfolio-description" name="description" placeholder="Brief description of the project" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="portfolio-category">Category</label>
+                        <select id="portfolio-category" name="category" required>
+                            <option value="pr">Public Relations</option>
+                            <option value="digital">Digital Marketing</option>
+                            <option value="automation">Automation</option>
+                            <option value="content">Content Creation</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="portfolio-image">Project Image</label>
+                        <input type="file" id="portfolio-image" name="imageFile" accept="image/*">
+                        <p id="current-portfolio-image" style="margin-top: 0.5rem; font-size: 0.9rem; color: #64748b;"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="portfolio-image-url">Image URL (if not uploading)</label>
+                        <input type="url" id="portfolio-image-url" name="imageUrl" placeholder="https://picsum.photos/seed/project/800/480">
+                    </div>
+                    <div class="form-group">
+                        <label for="portfolio-tags">Tags (comma-separated)</label>
+                        <input type="text" id="portfolio-tags" name="tags" placeholder="e.g., PR Strategy, Media Relations">
+                    </div>
+                    <div class="form-group">
+                        <label for="portfolio-link">Case Study Link (optional)</label>
+                        <input type="url" id="portfolio-link" name="link" placeholder="https://voiceforte.com/case-study-1.html">
+                    </div>
+                    <button type="submit" class="btn btn-success">Add/Update Portfolio Item</button>
+                    <button type="button" id="clear-portfolio-form" class="btn btn-outline-dark ml-2">Clear Form</button>
+                </form>
+
+                <div class="item-list">
+                    <div class="item-list-header">
+                        <h4>Existing Portfolio Items</h4>
+                        <button id="refresh-portfolio-list" class="btn btn-outline-primary"><i class="fas fa-sync-alt"></i> Refresh</button>
+                    </div>
+                    <div id="portfolio-items-list">
+                        <!-- Portfolio items will be loaded here dynamically -->
+                        <p class="text-center text-gray-500">No portfolio items found. Add one above!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Client Messages -->
+            <div id="messages-tab" class="tab-content" style="display:none;">
+                <h3>Client Messages</h3>
+                <div id="messages-error" class="error-message" style="display:none;"></div>
+                <div class="item-list">
+                    <div class="item-list-header">
+                        <h4>All Messages</h4>
+                        <button id="refresh-messages-list" class="btn btn-outline-primary"><i class="fas fa-sync-alt"></i> Refresh</button>
+                    </div>
+                    <div id="client-messages-list">
+                        <!-- Client messages will be loaded here dynamically -->
+                        <p class="text-center text-gray-500">No messages received yet.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay" style="display:none;">
+        <div class="loading-spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/firestore-service.js"></script>
+    <script type="module" src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Replace YOUR_ADMIN_EMAIL with the email of the admin user you create in Firebase Authentication
+    function isAdmin() {
+      return request.auth != null && request.auth.token.email == "YOUR_ADMIN_EMAIL";
+    }
+    // Public website content: everyone can read, only the admin can edit
+    match /cms/{id}      { allow read: if true; allow write: if isAdmin(); }
+    match /team/{id}     { allow read: if true; allow write: if isAdmin(); }
+    match /insights/{id} { allow read: if true; allow write: if isAdmin(); }
+    match /{other=**}    { allow read, write: if false; }
+  }
+}

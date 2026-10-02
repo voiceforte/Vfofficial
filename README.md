@@ -1,20 +1,5 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Voice Forte™ website
 
-# Run and deploy your AI Studio app
-
-This contains everything you need to run your app locally.
-
-View your app in AI Studio: https://ai.studio/apps/d6c6c0bd-bec7-4bf0-9883-392ad5a3fdcc
-
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Static website (HTML/CSS/JS) for www.voiceforte.com, hosted on GitHub Pages.
+Content is managed from the admin panel; see ADMIN-SETUP.md.
+Never commit passwords, API keys or tokens to this repository.

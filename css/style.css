@@ -276,3 +276,10 @@ footer { background: #080f1a; border-top: 1px solid var(--border); padding: 3rem
   .wa-float { bottom: 1.2rem; right: 1.2rem; padding: 0.75rem; border-radius: 50%; }
   .wa-label { display: none; }
 }
+
+/* Team section (managed from the admin panel) */
+.team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin-top: 2rem; }
+.team-card { border: 1px solid var(--border); border-radius: 3px; padding: 1.8rem; text-align: center; background: rgba(255,255,255,0.02); }
+.team-card img, .team-ph { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: 0 auto 1rem; display: block; border: 1px solid var(--gold); }
+.team-ph { display: flex; align-items: center; justify-content: center; font-size: 2.2rem; color: var(--gold); }
+.team-role { color: var(--gold); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.8rem; }

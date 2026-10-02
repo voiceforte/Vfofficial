@@ -6,8 +6,7 @@ import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-aut
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 export const firebaseConfig = {
-    apiKey: "AIzaSyCHsXK062IVj7AARwfT2dxbyZJ-iKHR0qM",
-    authDomain: "voice-forte-website.firebaseapp.com",
+        authDomain: "voice-forte-website.firebaseapp.com",
     projectId: "voice-forte-website",
     storageBucket: "voice-forte-website.firebasestorage.app",
     messagingSenderId: "1042407770134",
